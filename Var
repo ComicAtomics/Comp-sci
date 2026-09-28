@@ -1,0 +1,8 @@
+h = 0
+m = 42
+s = 42
+km = 10
+miles = km//1.60934
+
+
+print(f" {km} km is equal to {miles} miles")
