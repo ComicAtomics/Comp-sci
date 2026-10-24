@@ -1,0 +1,31 @@
+#shopping vouchers
+# Money Spent Voucher percentage 
+# Less than $10 No vouchers 
+# From $10 to $60 8% 
+# More than $60 to $150 10% 
+# More than $150 to $210 12% 
+# More than $210 14%
+
+money_spent = float(input("Input the total spent: "))
+
+if 0<money_spent < 10 and money_spent != 0:
+    print("no vouchers received")
+    print(f"total is: {money_spent:,.2f}")
+elif 10<=money_spent<60 and money_spent != 0:
+    print("8% voucher received")
+    money_spent = money_spent - money_spent*0.08
+    print(f"total is: {money_spent:,.2f}")
+elif 60<money_spent<=150 and money_spent != 0:
+    print("10% voucher received")
+    money_spent = money_spent - money_spent*0.1
+    print(f"total is: {money_spent:,.2f}")
+elif 150<=money_spent<210 and money_spent != 0:
+    print("12% voucher received")
+    money_spent = money_spent - money_spent*0.12
+    print(f"total is: {money_spent:,.2f}")
+elif 210<=money_spent and money_spent != 0:
+    print("14% voucher received")
+    money_spent = money_spent - money_spent*0.14
+    print(f"total is: {money_spent:,.2f}")
+else:
+    print(money_spent,"not possible")

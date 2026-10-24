@@ -1,0 +1,22 @@
+
+#using loops, exercise requires obtaining 4 values and summing them up after each time looped.
+print("welcome to program, u will be asked to type 4 values and algorithm will sum up the values")
+count = 0
+even_count = 0
+odd_count = 0
+values = [] #creates a list to store values OUTSIDE of the loop
+for i in range(4):
+    number = int(input("Type a value: "))
+    values.append(number) #affix the inputted number to values list
+    count = count + number
+    if number % 2 == 0: #if even
+        even_count = even_count + 1
+    else: #if odd
+        odd_count = odd_count + 1
+
+print(values)
+print(f"{count:,}") #print sum value here
+print("Minimum:", min(values))
+print("Maximum:", max(values))
+print("# of Even numbers:", even_count)
+print("# of Odd numbers:", odd_count)

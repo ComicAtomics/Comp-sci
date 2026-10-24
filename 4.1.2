@@ -1,0 +1,59 @@
+# 04.1.2 Parsing a String. Write a program that reads a line of incoming text as a string and displays 
+# the following:  
+# only the uppercase letters of the string; 
+# letters in even positions in the string; 
+# the same string in which, instead of vowels (upper or lowercase), there is an underscore (_);  
+# the number of numeric digits in the string; 
+# the positions of all vowels in the string. [P4.3]
+
+#variables
+digitfound = False
+digitposition = 0
+underscore_count = 0
+digit_count = 0
+sentence = str(input("type a line: "))
+upper_index = []
+even_index = []
+odd_index = []
+vowel_list = ["a","e","i","o","u"]
+vowel_index = []
+
+#testing area
+while not digitfound and digitposition < len(sentence) :
+    if sentence[digitposition].isdigit() :
+        digitfound = True
+    else :
+        digitposition += 1
+
+for i in range(len(sentence)):
+    if sentence[i].isupper():
+        upper_index.append(sentence[i])
+
+    if sentence[i].count("_"):
+        underscore_count += 1
+
+    if sentence[i].isdigit():
+        digit_count += 1
+
+    if sentence[i].lower() in vowel_list:
+        vowel_index.append(i + 1)
+
+    if i % 2 == 0:
+        if sentence[i].isalpha():
+            odd_index.append(sentence[i])
+    else:
+        if sentence[i].isalpha():
+            even_index.append(sentence[i])
+
+#output area
+print(upper_index)
+print("even position characters: ",even_index)
+print("odd position characters: ",odd_index)
+print("number of underscores: ",underscore_count)
+print("number of digits: ",digit_count)
+print("position of vowels: ",vowel_index)
+
+if digitfound:
+    print("First digit occurs at position: ", digitposition+1)
+else:
+    print("string contains no digits")

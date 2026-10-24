@@ -1,0 +1,29 @@
+# 04.2.2 Diagnostic imaging. The radioactive decay of radioactive materials can be modeled by the 
+# equation 𝐴𝐴 = 𝐴𝐴0𝑒𝑒−𝜆𝜆𝜆𝜆 , where 𝐴𝐴 is the amount of material at time 𝑡𝑡, 𝐴𝐴0 is the quantity at time 0 ,
+# (expressed in the same unit of measurement 𝑡𝑡).  
+# Technetium-99 is a radioisotope that is used for imaging of the brain. It has a half-life of 6 hours. 
+# Write a program that displays the relative amount 𝐴/𝐴0 in a patient's body for each hour during the 
+# a lapse of 24 after receipt the dose.
+# A = A_0 * e ^(-w*t)
+# w = ln(2)/T_1/2 
+
+#this program will handle Tc-99, with a T_1/2 = 6 hours. we will measure the effects over 24 hours
+import math
+A_0 = float(input("type initial quantity of material: ")) #quantity at time 0
+A = 0
+time = 0
+T = 6
+l = math.log(2)/T
+
+while 0 <= time <= 24:
+    A = A_0 * math.exp(-l*time)
+    ratio = A/A_0
+    print(f"Current value of the ratio A/A_0: {ratio:.4f}, at time: {time} hours")
+    if time == 24:
+        print()
+        print(f"The program has ended due to reaching 24 hours. the final value of A/A_0 was: {ratio:.4f}")
+        break
+    time += 1
+
+
+

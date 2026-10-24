@@ -1,0 +1,10 @@
+x = int(input("type a first number: "))
+y = int(input("type a second number: "))
+z = int(input("type a third number: "))
+
+if x < y < z:
+    print(f"The pattern {x}, {y}, {z} is in ascending order!")
+elif x > y > z:
+    print(f"The pattern {x}, {y}, {z} is in descending order!")
+elif not(x<y<z) or not(x>y>z):
+    print("the pattern is not in any monotone order")

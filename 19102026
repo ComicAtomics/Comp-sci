@@ -1,0 +1,55 @@
+#loops practice 1
+
+initial_value = 10000
+year = 0
+print(f"year: {year}, value: {initial_value} Dollars!")
+while initial_value < 20000:
+    initial_value = initial_value + (initial_value * 0.05)
+    year = year + 1
+    print(f"year: {year}, value: {initial_value:,.2f} Dollars!")
+
+print(f"the value has reached over 20000 dollars after {year} years!")
+
+
+
+
+
+
+#loops practice 2
+
+n=1729
+total=0
+while n > 0:
+    digit = n % 10
+    total = total + digit
+    n = n//10
+
+print(total)
+
+
+
+
+
+
+# loops practice 3
+
+count = 0
+total = 0.0
+
+salary = 0.0
+power = True
+while salary >= 0 and power:
+    salary = float(input("Enter a salary or type -1 to exit and calculate:"))
+    if salary==-1:
+        power = False
+        print("program loop has been exited.")
+    else:
+        total = total + salary
+        count += 1
+    
+    
+if count > 0:
+    average = total/count
+    print(f"The average salary was ${average:,.2f} and over {count} periods")
+else:
+    print("no data was entered.")
