@@ -1,0 +1,29 @@
+# Trajectories
+
+DELTA_T = 0.01
+g = 9.81
+
+# s = s + v * DELTA_T
+# v = v - g * DELTA_T
+
+v_0 = float(input("Enter initial velocity (m/s): "))
+store = []
+v = v_0
+s = 0
+t = 0
+
+while s >= 0:
+    s = s + v * DELTA_T
+    v = v - g * DELTA_T
+    t = t + DELTA_T
+
+    if round(t, 2) % 1 == 0:
+        exact_s = -0.5 * g * t**2 + v_0 * t
+        print(f"Time: {t:.0f} s | Simulated position: {s:.2f} m | Formula position: {exact_s:.2f} m")
+        store.append([t,s,exact_s])
+
+if s<0:
+    def get_height(x):
+        return x[1]
+    max_height = max(store, key=get_height)
+    print(f"{max_height[1]:,.2f} m was the maximum height achieved, at {max_height[0]:,.2f} seconds")
