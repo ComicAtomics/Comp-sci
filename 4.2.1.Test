@@ -1,0 +1,24 @@
+elif starting_player == 1: #what happens when players turn is first
+    print("AI chooses first")
+    player_tracker = False
+    print(pile, "total marbles")
+    while pile > 1:
+        print("computers turn...")
+        time.sleep(random.randint(2,5)) #make the user believe the computer is actually thinking
+        if ai_mode == 0: #stupid mode
+            ai_takes = random.randint(1,pile//2)
+            player_tracker = False
+            pile -= ai_takes
+            print(ai_takes, " marbles have been taken by the AI, there are ", pile, " remaining marbles")
+            time.sleep(1)
+
+            action = int(input(f"Choose an amount of marbles to take (MAX {pile//2}): "))
+            if action <= (pile//2):
+                pile -= action
+                print(pile, "marbles remain...")
+                time.sleep(1)
+
+            else:
+                print("Please choose an allowed amount to take from pile")
+                print()
+                time.sleep(1)

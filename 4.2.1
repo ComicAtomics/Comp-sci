@@ -1,0 +1,117 @@
+#nims game
+#  In this game, two players alternately take marbles from a pile. With each move,
+# a player chooses how many marbles to take: at least one and at most half of the available marbles.
+# The player who takes the last ball loses the game. 
+
+# I. generate a random integer between 10 and 100 to be used as the initial size of the pile of
+# marbles;
+# II. generate a random integer, either 0 or 1, to be used to decide whether the user or the
+# computer will play first;
+# III. Generate a random integer, either 0 or 1, to use to decide whether the computer will play
+# smart or stupid:
+# a. playing stupidly, at each of its moves the computer simply takes a random number
+# of marbles from the pile (but valid, i.e. between 1 and n/2, if there are n
+# marbles left in the pile);
+# b. playing in intelligent mode, on the other hand, it draws a number of marbles such
+# that the number of those remaining in the pile is a power of two decreased by one
+# unit, i.e. 3, 7, 15, 31 or 63. The latter is always a valid move, except when the size
+# of the pile is equal to a power of two decreased by one unit. In this case, the
+# computer makes a move chosen at random (obviously among the valid ones).
+
+import random 
+import time
+pile = random.randint(10,100)
+starting_player = random.randint(0,1) #0 will be player, 1 will be computer
+ai_mode = random.randint(0,1) #0 will be stupid, 1 will be smart
+
+
+def ai_move(pile, ai_mode): 
+    if ai_mode == 0:
+        return random.randint(1, pile // 2)
+
+    targets = [3, 7, 15, 31, 63]
+    valid_targets = [
+        target for target in targets
+        if 1 <= pile - target <= pile // 2
+    ]
+
+    if valid_targets:
+        target = max(valid_targets)
+        return pile - target
+
+    # No target is reachable, or the pile is already a target.
+    return random.randint(1, pile // 2)
+
+
+if ai_mode == 1:
+    print("smart mode") 
+elif ai_mode == 0: 
+    print("stupid mode")
+
+
+if starting_player == 0: #what happens when players turn is first
+    print("Player chooses first")
+    print(pile, "total marbles")
+    while pile > 1:
+        try:
+            action = int(input(f"Choose an amount of marbles to take from the pile (MAX {pile//2}): "))
+        except ValueError:
+            print("Please enter a positive integer that is accepted by the game.")
+            print()
+            time.sleep(1)
+            continue
+
+        if 0 < action <= pile // 2:
+            pile -= action
+            print(pile, "marbles remain...")
+
+            # The computer must take the last marble (loses)
+            if pile == 1:
+                print("The computer LOSES!!!")
+                break
+
+            time.sleep(1)
+            print("computers turn...")
+            time.sleep(random.randint(1, 4))
+
+            ai_takes = ai_move(pile, ai_mode)
+            pile -= ai_takes
+            print(ai_takes, "marbles have been taken by the AI, there are", pile, "remaining marbles")
+
+            if pile == 1:
+                print("The player LOSES!!!")
+                break
+
+elif starting_player == 1: #AI turn is first
+    print("AI chooses first")
+    print(pile, "total marbles")
+
+    while pile > 1:
+        time.sleep(1)
+        ai_takes = ai_move(pile, ai_mode)
+        pile -= ai_takes
+        print(ai_takes, "marbles have been taken by the AI, there are", pile, "remaining marbles")
+
+        if pile == 1:
+            print("The player LOSES!!!")
+            break
+
+        while True:
+            try:
+                action = int(input(f"Choose an amount of marbles to take from the pile (MAX {pile//2}): "))
+            except ValueError:
+                print("Please enter a positive integer that is accepted by the game.")
+                continue
+
+            if 0 < action <= pile // 2:
+                break
+
+            print("Please choose an allowed amount to take from pile")
+
+        pile -= action
+        print(pile, "marbles remain...")
+
+        if pile == 1:
+            print("The computer LOSES!!!")
+            break
+
