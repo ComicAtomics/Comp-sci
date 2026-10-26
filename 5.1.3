@@ -1,0 +1,30 @@
+# 05.1.3 Integer factorization. Write a program that asks the user for an integer and then displays its
+# prime factors. For example, if the user provides the number 150, the program should display:
+# 2
+# 3
+# 5
+# 5
+run_ = True
+
+while run_:
+    n = int(input("enter an integer: "))
+
+    factor = 2
+
+    while n > 1:
+        if n % factor == 0:
+            print(factor)
+            n //= factor
+        else:
+            factor += 1
+
+# The line n //= factor is a shorthand assignment operator in Python.
+# It means: “take the current value of n, divide it by factor, then store the result back into n.”
+# In other words, it is equivalent to writing n = n // factor. The // operator is floor division, 
+# which means it performs division and rounds down to the nearest whole number. This is useful when 
+# you are repeatedly factoring a number, because you want to keep only whole-number divisions.
+
+# For example, if n is 150 and factor is 2, then n //= factor changes n from 150 to 75. If factor was 3,
+#  then n would become 25, and so on. This is exactly what happens in a prime-factorization loop: you keep 
+#  dividing the number by the current factor until it is no longer divisible by that factor, then you
+#  increase the factor and continue. It is a compact and common pattern in loops that reduce a value step by step.

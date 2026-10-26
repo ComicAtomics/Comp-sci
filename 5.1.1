@@ -1,0 +1,30 @@
+#atm machine
+
+pin = 1234
+inserted = False
+limit = 0 
+
+insert_prompt = str(input("Do you want to insert card? (Y/N)"))
+if insert_prompt == "Y":
+    inserted = True
+else:
+    print("please enter a valid response. restart the program")
+
+while inserted and limit != 3:
+    try:
+        inserted_password = int(input("please type your password: "))
+    except ValueError:
+        print("please enter a pin")
+        continue
+    
+    if inserted_password == pin:
+        print("your pin is correct!")
+        break
+
+    elif inserted_password != pin:
+        limit += 1
+        print(f"wrong pin entered, please try again ({3 - limit} attempts left)")
+
+    if limit == 3:
+        print("too many wrong attempts. your bank card is blocked")
+        inserted = False

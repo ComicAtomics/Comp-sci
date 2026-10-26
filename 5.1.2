@@ -1,0 +1,38 @@
+# 05.1.2 Noms des pays. In French, the names of nations are feminine when they end with the letter
+# e, otherwise, they are masculine, except for the following nouns, which are masculine even if they
+# end with e:
+# I. le Belize;
+# II. le Cambodge;
+# III. le Mexique;
+# IV. le Mozambique;
+# V. le Zaïre;
+# VI. le Zimbabwe.
+# VII. les Etats-Unis;
+# VIII. les Pays-Bas.
+
+# Write a program that takes the name of a country in French and adds the article: 'le' for
+# masculine nouns and 'la' for feminine nouns, such as 'le Canada' or 'la Belgique'.
+# However, if the name of the country begins with a vowel, the article becomes 'l' (e.g.,
+# 'Afghanistan'). Finally, for the countries listed here, which have a plural noun, the article 'les'
+# is used:
+
+exceptions = ["Belize", "Cambodge", "Mexique", "Mozambique", "Zaire", "Zimbabwe"]
+plural = ["Etats Unis", "Pays Bas",]
+vowels = "aeiouyAEIOUY"
+run_ = True
+
+while run_:
+    prompt = str(input("Please enter the name of a country (in french of course): "))
+    if prompt in exceptions:
+        print("le", prompt)
+    if prompt.endswith("a") and not prompt in exceptions and not prompt[0] in vowels:
+        print("le", prompt)
+    if prompt.endswith("e") or prompt.endswith("o") and not prompt in exceptions and not prompt[0] in vowels:
+        print("la", prompt)
+    if prompt.endswith("es") or prompt in plural and not prompt in exceptions:
+        print("les", prompt)
+    if prompt[0] in vowels and not prompt in exceptions:
+        print("l'", prompt)
+    if prompt == "exit":
+        break
+
