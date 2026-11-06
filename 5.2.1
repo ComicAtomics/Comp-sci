@@ -1,0 +1,23 @@
+# 05.2.1 Random Number Generator. We get a simple random number generator when using the 
+# formula 𝑟𝑛𝑒𝑤 = (𝑎 ×𝑟𝑜𝑙𝑑 + 𝑏) % 𝑚, where 𝑎, 𝑏, 𝑟,  and  𝑚  are integers, and then repeating the 
+# calculation by assigning the current value of 𝑟𝑛𝑒𝑤 to 𝑟𝑜𝑙𝑑 . Write a program that asks the user to 
+# provide an initial value for 𝑟𝑜𝑙𝑑 (this value is the  seed of the random number generator), and then 
+# displays the first 100 integers generated, using a = 32310901, b = 1729, and m = 224. 
+
+r_new = 0
+
+def generate(old_value):
+    a = 32310901
+    b = 1729
+    m = 224
+    r_new = (a * old_value + b) % m 
+    return r_new
+
+def main():
+    r_old = int(input("Input a value for r_old: "))
+
+    for i in range(100):
+        r_old = generate(r_old)
+        print(r_old)
+        
+main()

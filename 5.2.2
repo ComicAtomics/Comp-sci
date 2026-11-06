@@ -1,0 +1,36 @@
+# 05.2.2 The Drunken Walk. A drunk person stands in a grid of streets. He randomly chooses one of 
+# the four directions at each intersection, walks to the next intersection, and repeats the same 
+# random choice. You might think the person won't move much overall because the movements 
+# related to these random choices will cancel each other out. But is this really the case? Write a 
+# program that represents the grid positions of streets as pairs of integers (𝑥, 𝑦). Implement drunk 
+# walking by considering 100 intersections and (0, 0) as the starting position. 
+
+import random
+
+def math(x,y,movement):
+    
+    if movement == 1: #turn backwards
+        y -= 1
+
+    if movement == 2: #turn left
+        x -= 1
+
+    if movement == 3: #go forwards
+        y += 1
+
+    if movement == 4: #turn right
+        x += 1
+
+    return x, y
+
+def main():
+    x=0
+    y=0
+    for i in range(100):
+        move = random.randint(1,4)
+        x, y = math(x,y,move)
+        print(x, y)
+
+    print("final position: ", x, y)
+
+main()

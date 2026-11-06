@@ -1,0 +1,39 @@
+# 05.1.4 At the cinema. Write a schedule that handles the presale of a limited number of movie 
+# tickets. Each buyer can buy a maximum of 4 tickets, and no more than 100 tickets can be sold in 
+# total. The program must ask the user how many tickets he wants to buy and then display the 
+# number of tickets left. The operation must be repeated until the tickets are sold out, displaying the 
+# number of buyers at the end. 
+
+movie_tickets = 100
+buyer = 0
+
+def ticketmaster(movie_tickets, amount):
+    movie_tickets -= amount
+    print(f"There are {movie_tickets} tickets remaining.")
+    return movie_tickets
+
+
+while movie_tickets > 0:
+    print(f"\n{movie_tickets} tickets are remaining.")
+
+    try:
+        ticket_purchase = int(input("Enter how many tickets you want to purchase (max 4): "))
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        continue
+
+    if ticket_purchase < 1 or ticket_purchase > 4:
+        print("Invalid purchase. You must buy between 1 and 4 tickets.")
+        continue
+
+    if ticket_purchase > movie_tickets:
+        print("Not enough tickets remaining.")
+        continue
+
+    movie_tickets = ticketmaster(movie_tickets, ticket_purchase)
+    buyer += 1
+
+    print("Operation succeeded!")
+
+print(f"\nAll tickets have been sold. There were {buyer} buyers in total.")
+
