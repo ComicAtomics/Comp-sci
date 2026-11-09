@@ -1,0 +1,32 @@
+# 07.1.1 Alternating sign sum. Write a program that receives as input a sequence of integers
+# (terminated by a blank line), and that calculates the alternating sum of its elements. For example, if
+# the program reads data 1 4 9 16 9 7 4 9 11, it should calculate and display 1 – 4 + 9 –
+# 16 + 9 – 7 + 4 – 9 + 11 = –2. 
+
+def main():
+    numbers = []
+
+    while True:
+        user_input = input("Type in a sequence of integers, separated by spaces per term (blank line to finish): ")
+        if user_input == "":
+            break
+
+        for value in user_input.split():
+            numbers.append(int(value))
+
+    if not numbers:
+        print("No numbers entered.")
+        return
+
+    total = 0
+    for i, value in enumerate(numbers):
+        if i % 2 == 0:
+            total += value
+        else:
+            total -= value
+
+    print("Sequence:", numbers)
+    print("Alternating sum:", total)
+
+
+main()

@@ -1,0 +1,25 @@
+# 07.2.2 Spacing. People who park their automobiles in a parking row usually prefer to maximize the
+# distance between the space they occupy and the spaces that are already occupied by other vehicles.
+# They, therefore, tend to occupy the middle seat of the longest row of free seats available.
+# For example, consider the situation where ten places are free:
+# _ _ _ _ _ _ _ _ _ _
+# The first person to arrive will occupy, with his or her vehicle, a seat in the middle of the row:
+# _ _ _ _ _ X _ _ _
+# The next person will place it in the middle of the longest row left free (i.e., the one on the left):
+# _ _ X _ _ X _ _ _ _ _
+# Write a program that receives as input the number of parking spaces that make up the row of
+# parking spaces and displays the row in the format indicated above each time a new space is
+# occupied according to the rule indicated. Tip: Use a list of Boolean values to indicate whether a
+# parking space is occupied or not.
+
+spaces = []
+parking_spaces = int(input("input the number of parking spaces in the row: "))
+cars_input = int(input("input the number of cars: "))
+for i in range(0, parking_spaces):
+    spaces.append("_")
+if cars_input > parking_spaces:
+    print("too many cars in the parking lot! [overflow]")
+
+
+
+print(spaces)

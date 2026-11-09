@@ -1,0 +1,42 @@
+# 07.1.2 List of random numbers. Write a program that initializes a list with ten random integers
+# between 1 and 100 and then displays, on four successive lines:
+# I. All elements of even index;
+# II. All elements of even value;
+# III. All elements in reverse order;
+# IV. The first and last element.
+
+import random
+list = []
+even_index = []
+even_value = []
+reverse_list = []
+firstlast_list = []
+
+def main():
+
+    i = 1 #counter
+
+    for i in range(0,4):
+        list.append(random.randrange(1,101))
+        
+        if i % 2 == 0:
+            even_index.append(list[i])
+        if list[i] % 2 == 0:
+            even_value.append(list[i])
+
+        i += 1
+
+    reverse_list.append(list[::-1])
+        
+    firstlast_list.append(list[0])
+    firstlast_list.append(list[-1])
+
+def printer():
+    print(list)
+    print("all elements of even index: ", even_index)
+    print("all elements of even value: ", even_value)
+    print("reverse list", reverse_list)
+    print("first and last elements:", firstlast_list)
+    
+main()
+printer()
