@@ -1,0 +1,19 @@
+# 07.1.5 The same elements. Write the function same_set(a, b) that checks if two lists 
+# contain the same elements, regardless of the order, ignoring the presence of duplicates. For 
+# example, the two lists 1 4 9 16 9 7 4 9 11 and 11 11 7 9 16 4 1 must be considered 
+# equal. The function must not modify lists that have been passed as parameters.
+
+
+def same_set(a,b):
+    if set(a) == set(b):
+        print("equal!")
+    else:
+        print("not equal!")
+    return a,b
+
+def main():
+    a = [1, 4, 9, 16, 9, 7, 4, 9, 11]
+    b = [11, 11, 7, 9, 16, 4, 1] # try replacing 16 with 13 for example
+    same_set(a, b)
+
+main()

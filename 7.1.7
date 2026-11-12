@@ -1,0 +1,25 @@
+# 07.1.7 Sum without minimum. Write the function sum_without_smallest(v) that 
+# calculates the sum of all the values of a list v, excluding the minimum value.
+
+import random
+
+def sum_without_smallest(v):
+    total = 0
+    smallest = min(v)
+
+    v.remove(smallest)
+
+    for i, value in enumerate(v):
+        total += value
+
+    return total
+
+def main():
+    v = []
+    for i in range(0,20):
+        v.append(random.randrange(1,10))
+    v.sort()
+    print(v)
+    print("sum of all values in list v:", sum_without_smallest(v))
+
+main()

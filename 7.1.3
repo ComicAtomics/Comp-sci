@@ -1,0 +1,36 @@
+# 07.1.3 Remove the minimum value. Write a function remove_min(v) that removes the 
+# minimum value from a list v without using the min()  function or the remove() method.
+
+import random
+v = []
+
+def print_list(v):
+    for i, value in enumerate(v):
+            print(i, value)
+    return 
+
+def remove_min(v):
+    minimum = v[0]
+    min_index = 0
+    for i, value in enumerate(v):
+        if value < minimum:
+            minimum = value
+            min_index = i
+
+    print("\nminimum: ",i, minimum)
+    del v[min_index]
+
+def main():
+    for i in range(0,10):
+        v.append(random.randrange(1,11))
+        i += 1
+
+    print("original list:")
+    print_list(v)
+
+    remove_min(v)
+    print("\nlist after removing minimmum:")
+    print_list(v)
+
+main()
+

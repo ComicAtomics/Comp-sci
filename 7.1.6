@@ -1,0 +1,16 @@
+# 07.1.6 Ordered list. Write a program that generates a sequence of 20 random integer values 
+# between 0 and 99, then displays the generated sequence, sorts it, and displays it again, ordered. 
+# Use the sort() method. 
+
+import random 
+
+def main():
+    list = []
+    for i in range(0,20):
+        list.append(random.randrange(0,100))
+
+    print(list)
+    list.sort()
+    print(list)
+
+main()
