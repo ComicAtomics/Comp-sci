@@ -3,11 +3,24 @@
 # the program reads data 1 4 9 16 9 7 4 9 11, it should calculate and display 1 – 4 + 9 –
 # 16 + 9 – 7 + 4 – 9 + 11 = –2. 
 
+def alternate(numbers):
+    total = 0
+
+    for i, value in enumerate(numbers):
+        if i % 2 == 0:
+            total += value
+        else:
+            total -= value
+
+    return total
+
+
 def main():
     numbers = []
 
     while True:
-        user_input = input("Type in a sequence of integers, separated by spaces per term (blank line to finish): ")
+        user_input = input("Enter integers separated by spaces (blank line to finish): ")
+
         if user_input == "":
             break
 
@@ -18,15 +31,19 @@ def main():
         print("No numbers entered.")
         return
 
-    total = 0
-    for i, value in enumerate(numbers):
-        if i % 2 == 0:
-            total += value
-        else:
-            total -= value
+    sequence = ""
 
-    print("Sequence:", numbers)
-    print("Alternating sum:", total)
+    for i, value in enumerate(numbers):
+        if i == 0:
+            sequence += str(value)
+        elif i % 2 == 0:
+            sequence += f" + {value}"
+        else:
+            sequence += f" - {value}"
+
+    print("Sequence:", sequence)
+    
+    print("Alternating sum:", alternate(numbers))
 
 
 main()
